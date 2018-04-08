@@ -1,0 +1,26 @@
+{
+  "name": "meduim-post-manager",
+  "version": "1.0.0",
+  "description": "You can manage your medium post by git. And you only do push to post it to Medium.",
+  "main": "index.js",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "commander": "^2.15.1",
+    "request-promise-native": "^1.0.5"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomonari-t/medium-post-manager.git"
+  },
+  "author": "tomonari-t",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomonari-t/medium-post-manager/issues"
+  },
+  "homepage": "https://github.com/tomonari-t/medium-post-manager#readme"
+}
