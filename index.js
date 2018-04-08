@@ -15,8 +15,11 @@ const getModifiedFileList = (commitList) => {
 };
 
 exports.postMedium = (req, res) => {
+    require('dotenv').config();
     const body = req.body;
     const commits = req.body.commits;
+    // parse request => get request source(URL with add or modify type)
+    // request medium
     let addedFileList = getAddedFileList(commits);
     let modifiedFileList = getModifiedFileList(commits);
     res.send(200);

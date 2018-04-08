@@ -37,3 +37,16 @@ test('postMedium should response 200', () => {
     postMedium(req, res);
     assert(res.send.calledOnce);
 });
+
+test('postMedium should set env variable', () => {
+    const postMedium = require('../index').postMedium;
+    const req = {
+        body: mockDataAddModify
+    };
+    const res = {
+        send: sinon.stub()
+    };
+    postMedium(req, res);
+
+    assert(process.env.MEDUIUM_API_KEY === 'hoooo');
+});
