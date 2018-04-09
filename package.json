@@ -9,12 +9,19 @@
     "medium-sdk": "0.0.4",
     "minimist": "^1.2.0",
     "request": "^2.85.0",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "espower-loader": "^1.2.2"
   },
   "devDependencies": {
     "commander": "^2.15.1",
     "eater": "^3.2.0",
-    "espower-loader": "^1.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
     "power-assert": "^1.5.0",
     "sinon": "^4.5.0"
   },
