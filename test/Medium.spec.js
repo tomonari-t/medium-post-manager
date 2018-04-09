@@ -1,8 +1,6 @@
 const fs = require('fs');
 const assert = require('power-assert');
-const {
-  test,
-} = require('eater/runner');
+const { test } = require('eater/runner');
 const {
   postMedium,
 } = require('../index');
@@ -14,7 +12,7 @@ const {
 } = require('../index');
 
 const sinon = require('sinon');
-const MediumPublisher = require('../src/medium');
+const MediumPublisher = require('../src/Medium');
 
 const mockDataAddModify = JSON.parse(fs.readFileSync(`${__dirname}/data/mock-add-modify.json`));
 const mockDataModify = JSON.parse(fs.readFileSync(`${__dirname}/data/mock-modify.json`));
