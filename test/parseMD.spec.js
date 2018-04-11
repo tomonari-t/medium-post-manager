@@ -13,8 +13,7 @@ test('parseMM should return tags and content when receive MD string', () => {
 ## hoge
 `);
   assert.deepEqual(actual, {
-    tags: ['hoge', 'hoo', 'bar'], content: `
-# Hooo
+    tags: ['hoge', 'hoo', 'bar'], content: `# Hooo
 ## hoge
 `,
   });
