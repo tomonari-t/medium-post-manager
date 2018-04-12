@@ -2,7 +2,7 @@ const assert = require('power-assert');
 const { test } = require('eater/runner');
 const parseMD = require('../src/parseMD');
 
-test('parseMM should return tags and content when receive MD string', () => {
+test('parseMD should return tags and content when receive MD string', () => {
   const actual = parseMD(`
 
 - hoge
@@ -13,8 +13,7 @@ test('parseMM should return tags and content when receive MD string', () => {
 ## hoge
 `);
   assert.deepEqual(actual, {
-    tags: ['hoge', 'hoo', 'bar'], content: `# Hooo
-## hoge
-`,
+    tags: ['hoge', 'hoo', 'bar'], content: '# Hooo\n## hoge\n',
   });
 });
+

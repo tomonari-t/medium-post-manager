@@ -1,22 +1,31 @@
-const isMDList = text => /-\s\S+/.test(text);
+const isStartMDBody = string => /#+\s\S+/.test(string);
+const getTag = (string) => {
+  const regResult = string.match(/-\s(\S+)/);
+  if (regResult !== null) {
+    return regResult[1];
+  }
+  return '';
+};
 
 const parseMD = (mdString) => {
   const mdLines = mdString.trim().split('\n');
-  const tags = [];
-  mdLines.forEach((text, index) => {
-    let isBreak = false;
-    if (!isMDList(text)) {
-      isBreak = true;
+  let tags = [];
+  let tagsEndIndex;
+  for (let i = 0; i < mdLines.length; i += 1) {
+    const text = mdLines[i];
+    if (isStartMDBody(text)) {
+      tagsEndIndex = i;
+      break;
     }
 
-    if (!isBreak) {
-      mdLines.splice(index, 1);
-      tags.push(text.trim());
-    }
-  });
+    tags.push(getTag(text));
+  }
+  mdLines.splice(0, tagsEndIndex);
+  tags = tags.filter(tag => (tag.length !== 0));
+  const content = mdLines.join('\n');
   const parsedVal = {
     tags,
-    content: mdLines.join('\n'),
+    content: `${content}\n`,
   };
   return parsedVal;
 };
