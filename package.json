@@ -6,11 +6,12 @@
   "dependencies": {
     "colors": "^1.2.1",
     "dotenv": "^5.0.1",
+    "espower-loader": "^1.2.2",
     "medium-sdk": "0.0.4",
     "minimist": "^1.2.0",
     "request": "^2.85.0",
-    "request-promise-native": "^1.0.5",
-    "espower-loader": "^1.2.2"
+    "request-promise": "^4.2.2",
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "commander": "^2.15.1",
