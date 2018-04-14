@@ -1,11 +1,13 @@
+require('dotenv').config();
 const request = require('request-promise');
 const flow = require('promise-control-flow');
 const parseMD = require('./parseMD');
+const { GITHUB_ACCESS_TOKEN } = process.env;
 
-const requestGithub = (option) => {
+const _requestGithub = (option) => {
   const defaultOption = {
     headers: {
-      Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
+      Authorization: `token ${GITHUB_ACCESS_TOKEN}`,
       'User-Agent': 'posts-medium',
       'Content-Type': 'application/json',
     },
@@ -37,10 +39,10 @@ const getContent = (contentUrl) => {
       method: 'GET',
     };
 
-    requestGithub(option).then((json) => {
+    _requestGithub(option).then((json) => {
       const res = JSON.parse(json);
       const downloadContentUrl = res.download_url;
-      return requestGithub({url: downloadContentUrl });
+      return _requestGithub({ url: downloadContentUrl });
     }).then((content) => {
       resolve(content);
     }).catch((e) => {
@@ -51,7 +53,7 @@ const getContent = (contentUrl) => {
 
 
 const getAddedContent = (webhookObj) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const contentInfoList = getContentUrls(webhookObj);
     const taskList = [];
     contentInfoList.forEach((contentInfo) => {
@@ -64,6 +66,9 @@ const getAddedContent = (webhookObj) => {
             content: parsedContent.content,
             tags: parsedContent.tags,
           };
+        }).
+        catch((e) => {
+          reject(e);
         });
       });
     });
@@ -72,10 +77,11 @@ const getAddedContent = (webhookObj) => {
     flow.parallel(taskList)
       .then((contentList) => {
         resolve(contentList);
+      })
+      .catch((e) => {
+        reject(e);
       });
   });
 };
 
-module.exports.getContentUrls = getContentUrls;
-module.exports.getContent = getContent;
 module.exports.getAddedContent = getAddedContent;

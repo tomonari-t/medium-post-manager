@@ -19,17 +19,16 @@ const main = () => {
   console.log(`path: ${colors.red(path)}`);
   console.log(`url: ${colors.red(url)}`);
 
-  const bufData = fs.readFileSync(path, 'utf8');
+  const bufData = fs.readFileSync(path);
   const requestOption = {
     heqders: {
       'Content-Type': 'application/json',
     },
     url,
-    form: bufData,
+    json: bufData,
   };
-  request.post(requestOption, (err, res) => {
+  request.post(requestOption, (err, res, body) => {
     if (err) console.error(err);
-    console.log(res);
   });
 };
 
