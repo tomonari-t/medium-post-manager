@@ -16,16 +16,14 @@ test('parseMD should return tags and content when receive MD string', () => {
 
 test('parseMD should return tags and content when receive MD string', () => {
   const actual = parseMD(`
+- GitHub
+- Google Cloud Functions
 
-- hoge
-- hoo
-- bar
-
-# Hooo
-## hoge
+# Header
 `);
   assert.deepEqual(actual, {
-    tags: ['hoge', 'hoo', 'bar'], content: '# Hooo\n## hoge\n',
+    tags: ['GitHub', 'Google Cloud Functions'], content: `# Header
+`,
   });
 });
 
