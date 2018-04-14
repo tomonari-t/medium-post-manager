@@ -9,6 +9,7 @@
     "espower-loader": "^1.2.2",
     "medium-sdk": "0.0.4",
     "minimist": "^1.2.0",
+    "promise-control-flow": "^1.2.4",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "request-promise-native": "^1.0.5"
